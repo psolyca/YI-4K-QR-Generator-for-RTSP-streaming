@@ -1,5 +1,17 @@
 var qrcode = new QRCode("qrcode");
 
+$("input[name=wifi_mode]").change(function(e) {
+    var selection = $(this).val()
+    if ( selection == "1" || selection == "2" ) {
+        $("#ssid_input").removeClass('d-none');
+        $("#pwd_input").removeClass('d-none');
+    } else {
+        $("#ssid_input").addClass('d-none');
+        $("#pwd_input").addClass('d-none');
+
+    }
+})
+
 $('input[type=text]').on('keydown', function (e) {
     if (e.which == 13) {
         e.preventDefault();

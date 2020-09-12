@@ -25,6 +25,14 @@ body {
     padding-right: 55px;
 }
 
+.page.title {
+    max-width: 800px;
+}
+
+.page.large {
+    max-width: 600px;
+}
+
 .header {
     margin-top: 15px;
     font-weight: bold;
@@ -38,6 +46,17 @@ body {
     visibility: visible;
     -webkit-animation: fadein 0.5s, fadeout 0.5s 9.5s;
     animation: fadein 0.5s, fadeout 0.5s 9.5s;
+}
+
+.btn.btn-secondary.toggle-on-off {
+
+    background: red;
+    border-color: red;
+}
+
+.btn.btn-secondary.active.toggle-on-off {
+    background-color: green;
+    border-color: green;
 }
 
 @-webkit-keyframes fadein {

@@ -20,26 +20,62 @@
 </head>
 <body>
 <div class="container">
-<div class="page">
-<h2>YI 4K+ RTSP Stream QR Generator</h2><br />
-	  <div class="input-group">
-    <div class="input-group-prepend">
-        <span class="input-group-text">SSID</span>
-            <input type="text" pattern=".{3,}" id="ssid" name="ssid" class="form-control" placeholder="WiFi SSID" >
-      </div>
-</div>
-	  <div class="input-group">
-        <div class="input-group-prepend">
-            <span class="input-group-text">PWD</span>
-            <input type="text" id="pwd" name="pwd" class="form-control" placeholder="WiFi PASSWORD">
-      </div>
+    <div class="row">
+        <div class="page title col">
+            <h2>YI 4K RTMP Stream QR Generator</h2><br />
+
+        </div>
     </div>
-	  <div class="input-group">
-        <div class="input-group-prepend">
-            <span class="input-group-text">IP</span>
-            <input type="text" id="ip" name="ip" class="form-control" value="127.0.0.1" placeholder="127.0.0.1">
-      </div>
-    </div>
+    <div class="row">
+        <div class="page large col">
+            <div class="row">
+                <span>
+                    By default, live stream will use an existing connection.<br />
+                    If one want to force a reconnection, select option below.<br />
+                </span>
+            </div>
+            <div class="row">&nbsp;
+            </div>
+            <div class="row align-items-center">
+                <div class="col btn-group btn-group-toggle btn-group-vertical" data-toggle="buttons" id="wifi_mode">
+                    <label class="btn btn-primary active">
+                        <input type="radio" name="wifi_mode" id="option1" value="0" checked> Default
+                    </label>
+                    <label class="btn btn-primary">
+                        <input type="radio" name="wifi_mode" id="option2" value="1"> STA
+                    </label>
+                    <label class="btn btn-primary">
+                        <input type="radio" name="wifi_mode" id="option3" value="2"> AP
+                    </label>
+                </div>
+                <div class="col btn-group-toggle" data-toggle="buttons">
+                    <label class="btn btn-secondary toggle-on-off">
+                        <input type="checkbox"> Ethernet <span name="ether_switch">off</span>
+                    </label>
+                </div>
+            </div>
+
+        </div>
+        <div class="page col">
+            <div class="input-group d-none" id="ssid_input">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">SSID</span>
+                </div>
+                <input type="text" pattern=".{3,}" id="ssid" name="ssid" class="form-control"
+                    placeholder="WiFi SSID">
+            </div>
+            <div class="input-group d-none" id="pwd_input">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">PWD</span>
+                </div>
+                <input type="text" id="pwd" name="pwd" class="form-control" placeholder="WiFi PASSWORD">
+            </div>
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">IP</span>
+                </div>
+                <input type="text" id="ip" name="ip" class="form-control" placeholder="127.0.0.1/live">
+            </div>
       <div class="form-group">
 	  <label for="res"><div class="header">Resolution | Bitrate</div></label>
 	  <div id="options">
