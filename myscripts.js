@@ -10,9 +10,11 @@ function wifi_mode (mode = "") {
     if ( wifi == "sta" || wifi == "ap" ) {
         $("#ssid_input").removeClass('d-none');
         $("#pwd_input").removeClass('d-none');
+        $("#ether_check").removeClass('d-none');
     } else {
         $("#ssid_input").addClass('d-none');
         $("#pwd_input").addClass('d-none');
+        $("#ether_check").addClass('d-none');
     }
 }
 
@@ -26,7 +28,6 @@ $("input[name=firmware_version]").change(function(e) {
         wifi_mode("sta");
     }
 })
-
 
 $("input[name=wifi_mode]").change(function() {wifi_mode();});
 
