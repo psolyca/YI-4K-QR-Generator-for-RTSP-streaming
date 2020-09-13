@@ -76,6 +76,8 @@ function makeCode() {
     if (firmware === "custom") {
         if (wifi === "default") {
             qrssid = "None";
+        } else {
+            qrssid += "-" + mode;
         }
 
         if ( ethernet ) {
