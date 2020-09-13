@@ -1,14 +1,41 @@
+var firmware = "custom";
+var wifi = "default";
+var ethernet = false;
 var qrcode = new QRCode("qrcode");
 
-$("input[name=wifi_mode]").change(function(e) {
-    var selection = $(this).val()
-    if ( selection == "1" || selection == "2" ) {
+function wifi_mode (mode = "") {
+    $("#ssid").val("")
+    $("#pwd").val("")
+    wifi = !mode ? $("input[name=wifi_mode]:checked").val() : mode;
+    if ( wifi == "sta" || wifi == "ap" ) {
         $("#ssid_input").removeClass('d-none');
         $("#pwd_input").removeClass('d-none');
     } else {
         $("#ssid_input").addClass('d-none');
         $("#pwd_input").addClass('d-none');
+    }
+}
 
+$("input[name=firmware_version]").change(function(e) {
+    firmware = $(this).val()
+    if ( firmware == "custom" ) {
+        $("#custom_parameters").removeClass('d-none');
+        wifi_mode();
+    } else {
+        $("#custom_parameters").addClass('d-none');
+        wifi_mode("sta");
+    }
+})
+
+
+$("input[name=wifi_mode]").change(function() {wifi_mode();});
+
+$("#ethernet").on("click", function() {
+    ethernet = $("#ethernet").is(":checked");
+    if ( ethernet ) {
+        $("#ether_switch").text("on");
+    } else {
+        $("#ether_switch").text("off");
     }
 })
 
@@ -21,6 +48,7 @@ $('input[type=text]').on('keydown', function (e) {
 
 function makeCode() {
     var ssid = $("#ssid").val();
+    var qrssid = ssid
     var ip = $("#ip").val();
     var res = $("#res").val();
     var pwd = $("#pwd").val();
@@ -36,7 +64,7 @@ function makeCode() {
         rate = 1;
     }
 
-    if (!ssid) {
+    if ( !ssid && wifi !== "default" ) {
         $('.modal-header').html("Error");
         $("#qrcode").hide();
         $("#modal").modal("toggle");
@@ -44,12 +72,25 @@ function makeCode() {
         return;
     }
 
-    qrcode.makeCode('{"res":"' + res + '","sign":"","url":"rtmp://' + ip + '","ak":"","ssid":"' + ssid +
+    if (firmware === "custom") {
+        if (wifi === "default") {
+            qrssid = "None";
+        }
+
+        if ( ethernet ) {
+            qrssid += "-ethernet"
+        }
+    }
+
+    qrcode.makeCode('{"res":"' + res + '","sign":"","url":"rtmp://' + ip + '","ak":"","ssid":"' + qrssid +
         '","pwd":"' + pwd + '","rate":"' + rate + '","dur":""}');
     $("#info").empty();
-    $('.modal-header').html("Scan QR with YI 4K+ Action Camera");
-    $('#info').append("SSID: " + ssid + "<br />").append("IP: " + ip + "<br />").append("Resolution: " + res +
-        "<br />").append("Bitrate: " + rate + "<br />").append("Pass: " + pwd);
+    $('.modal-header').html("Scan QR with YI 4K Action Camera");
+    if ( wifi !== "default") {
+        $('#info').append("SSID: " + ssid + "<br />").append("Pass: " + pwd + "<br />")
+    }
+    $('#info').append("IP: " + ip + "<br />").append("Resolution: " + res +
+        "<br />").append("Bitrate: " + rate + "<br />");
     $("#modal").modal("toggle");
     $("#qrcode").show();
 }

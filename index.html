@@ -22,12 +22,24 @@
 <div class="container">
     <div class="row">
         <div class="page title col">
-            <h2>YI 4K RTMP Stream QR Generator</h2><br />
-
+            <h2>YI 4K RTMP Stream QR Generator<br />DO NOT USE THIS - WORK IN PROGRESS</h2><br />
         </div>
     </div>
     <div class="row">
-        <div class="page large col">
+        <div class="page title col">
+            Which version of firmware do you use ?<br />
+            <div class="col btn-group-sm btn-group-toggle" data-toggle="buttons" id="firmware_version">
+                <label class="btn btn-light active" aria-pressed="true">
+                    <input type="radio" name="firmware_version" value="custom" checked>Custom
+                </label>
+                <label class="btn btn-light" aria-pressed="false">
+                    <input type="radio" name="firmware_version" value="official">Official
+                </label>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="page large col" id="custom_parameters">
             <div class="row">
                 <span>
                     By default, live stream will use an existing connection.<br />
@@ -39,18 +51,18 @@
             <div class="row align-items-center">
                 <div class="col btn-group btn-group-toggle btn-group-vertical" data-toggle="buttons" id="wifi_mode">
                     <label class="btn btn-primary active">
-                        <input type="radio" name="wifi_mode" id="option1" value="0" checked> Default
+                        <input type="radio" name="wifi_mode" value="default" checked> Default
                     </label>
                     <label class="btn btn-primary">
-                        <input type="radio" name="wifi_mode" id="option2" value="1"> STA
+                        <input type="radio" name="wifi_mode" value="sta"> STA
                     </label>
                     <label class="btn btn-primary">
-                        <input type="radio" name="wifi_mode" id="option3" value="2"> AP
+                        <input type="radio" name="wifi_mode" value="ap"> AP
                     </label>
                 </div>
                 <div class="col btn-group-toggle" data-toggle="buttons">
                     <label class="btn btn-secondary toggle-on-off">
-                        <input type="checkbox"> Ethernet <span name="ether_switch">off</span>
+                        <input type="checkbox" id="ethernet"> Ethernet <span id="ether_switch">off</span>
                     </label>
                 </div>
             </div>
@@ -72,9 +84,9 @@
             </div>
             <div class="input-group">
                 <div class="input-group-prepend">
-                    <span class="input-group-text">IP</span>
+                    <span class="input-group-text">RTMP URL</span>
                 </div>
-                <input type="text" id="ip" name="ip" class="form-control" placeholder="127.0.0.1/live">
+                <input type="text" id="ip" name="ip" class="form-control" value="127.0.0.1/live" placeholder="127.0.0.1/live">
             </div>
       <div class="form-group">
 	  <label for="res"><div class="header">Resolution | Bitrate</div></label>
