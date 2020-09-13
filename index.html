@@ -1,129 +1,139 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <meta charset="UTF-8">
+
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no" />
-<title>YI 4K RTSP Stream QR Generator</title>
-<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script> -->
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-    integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-<link rel="stylesheet" href="css/styles.css">
-<script src="https://code.jquery.com/jquery-3.5.1.min.js"
-    integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
-    integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous">
-</script>
-<script type="text/javascript" src="qrcode.min.js"></script>
-<script type="text/javascript" src="myscripts.js" async></script>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no" />
+    <title>YI 4K RTSP Stream QR Generator</title>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script> -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"
+        integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+        integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous">
+    </script>
+    <script type="text/javascript" src="qrcode.min.js"></script>
+    <script type="text/javascript" src="myscripts.js" async></script>
 
 </head>
-<body>
-<div class="container">
-    <div class="row">
-        <div class="page title col">
-            <h2>YI 4K RTMP Stream QR Generator<br />DO NOT USE THIS - WORK IN PROGRESS</h2><br />
-        </div>
-    </div>
-    <div class="row">
-        <div class="page title col">
-            Which version of firmware do you use ?<br />
-            <div class="col btn-group-sm btn-group-toggle" data-toggle="buttons" id="firmware_version">
-                <label class="btn btn-light active" aria-pressed="true">
-                    <input type="radio" name="firmware_version" value="custom" checked>Custom
-                </label>
-                <label class="btn btn-light" aria-pressed="false">
-                    <input type="radio" name="firmware_version" value="official">Official
-                </label>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="page large col" id="custom_parameters">
-            <div class="row">
-                <span>
-                    By default, live stream will use an existing connection.<br />
-                    If one want to force a reconnection, select option below.<br />
-                </span>
-            </div>
-            <div class="row">&nbsp;
-            </div>
-            <div class="row align-items-center">
-                <div class="col btn-group btn-group-toggle btn-group-vertical" data-toggle="buttons" id="wifi_mode">
-                    <label class="btn btn-primary active">
-                        <input type="radio" name="wifi_mode" value="default" checked> Default
-                    </label>
-                    <label class="btn btn-primary">
-                        <input type="radio" name="wifi_mode" value="sta"> STA
-                    </label>
-                    <label class="btn btn-primary">
-                        <input type="radio" name="wifi_mode" value="ap"> AP
-                    </label>
-                </div>
-                <div class="col btn-group-toggle" data-toggle="buttons">
-                    <label class="btn btn-secondary toggle-on-off">
-                        <input type="checkbox" id="ethernet"> Ethernet <span id="ether_switch">off</span>
-                    </label>
-                </div>
-            </div>
 
-        </div>
-        <div class="page col">
-            <div class="input-group d-none" id="ssid_input">
-                <div class="input-group-prepend">
-                    <span class="input-group-text">SSID</span>
-                </div>
-                <input type="text" pattern=".{3,}" id="ssid" name="ssid" class="form-control"
-                    placeholder="WiFi SSID">
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="page title col-">
+                <h2>YI 4K RTMP Stream QR Generator<br />DO NOT USE THIS - WORK IN PROGRESS</h2><br />
             </div>
-            <div class="input-group d-none" id="pwd_input">
-                <div class="input-group-prepend">
-                    <span class="input-group-text">PWD</span>
+        </div>
+        <div class="row">
+            <div class="page title col">
+                Which version of firmware do you use ?<br />
+                <div class="col btn-group-sm btn-group-toggle" data-toggle="buttons" id="firmware_version">
+                    <label class="btn btn-light active" aria-pressed="true">
+                        <input type="radio" name="firmware_version" value="custom" checked>Custom
+                    </label>
+                    <label class="btn btn-light" aria-pressed="false">
+                        <input type="radio" name="firmware_version" value="official">Official
+                    </label>
                 </div>
-                <input type="text" id="pwd" name="pwd" class="form-control" placeholder="WiFi PASSWORD">
             </div>
-            <div class="input-group">
-                <div class="input-group-prepend">
-                    <span class="input-group-text">RTMP URL</span>
+        </div>
+        <div class="row">
+            <div class="page large col-" id="custom_parameters">
+                <div class="row">
+                    <div class="col-">
+                        <span>
+                            By default, live stream will use an existing connection.<br />
+                            If one want to force a reconnection, select option below.<br />
+                        </span>
+                    </div>
                 </div>
-                <input type="text" id="ip" name="ip" class="form-control" value="127.0.0.1/live" placeholder="127.0.0.1/live">
+                <div class="row">
+                    <div class="col-">&nbsp;</div>
+                </div>
+                <div class="row align-items-center">
+                    <div class="col btn-group btn-group-toggle btn-group-vertical" data-toggle="buttons" id="wifi_mode">
+                        <label class="btn btn-primary active">
+                            <input type="radio" name="wifi_mode" value="default" checked> Default
+                        </label>
+                        <label class="btn btn-primary">
+                            <input type="radio" name="wifi_mode" value="sta"> STA
+                        </label>
+                        <label class="btn btn-primary">
+                            <input type="radio" name="wifi_mode" value="ap"> AP
+                        </label>
+                    </div>
+                    <div class="col btn-group-toggle" data-toggle="buttons">
+                        <label class="btn btn-secondary toggle-on-off">
+                            <input type="checkbox" id="ethernet"> Ethernet <span id="ether_switch">off</span>
+                        </label>
+                    </div>
+                </div>
+
             </div>
-      <div class="form-group">
-	  <label for="res"><div class="header">Resolution | Bitrate</div></label>
-	  <div id="options">
-      <select class="w-50 form-control" id="res" name="res">
-        <option>1080p</option>
-        <option selected>720p</option>
-        <option>480p</option>
-        <option>360p</option>
-      </select>
-      <select class="w-50 form-control" id="rate" name="rate">
-        <option>1.37 Mbps</option>
-        <option selected>1.1 Mbps</option>
-        <option>0.9 Mbps</option>
-      </select>
-      </div>
-      </div>
-     <div>
-        <br />
-            <input type="submit" class="btn btn-danger" id="submitButton" name="submitButton" value="Generate QR" onClick="makeCode()">
+            <div class="page col-">
+                <div class="input-group d-none" id="ssid_input">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">SSID</span>
+                    </div>
+                    <input type="text" pattern=".{3,}" id="ssid" name="ssid" class="form-control"
+                        placeholder="WiFi SSID">
+                </div>
+                <div class="input-group d-none" id="pwd_input">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">PWD</span>
+                    </div>
+                    <input type="text" id="pwd" name="pwd" class="form-control" placeholder="WiFi PASSWORD">
+                </div>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">RTMP URL</span>
+                    </div>
+                    <input type="text" id="ip" name="ip" class="form-control" value="127.0.0.1/live"
+                        placeholder="127.0.0.1/live">
+                </div>
+                <div class="form-group">
+                    <label for="res">
+                        <div class="header">Resolution | Bitrate</div>
+                    </label>
+                    <div id="options">
+                        <select class="w-50 form-control" id="res" name="res">
+                            <option>1080p</option>
+                            <option selected>720p</option>
+                            <option>480p</option>
+                            <option>360p</option>
+                        </select>
+                        <select class="w-50 form-control" id="rate" name="rate">
+                            <option>1.37 Mbps</option>
+                            <option selected>1.1 Mbps</option>
+                            <option>0.9 Mbps</option>
+                        </select>
+                    </div>
+                </div>
+                <div>
+                    <br />
+                    <input type="submit" class="btn btn-danger" id="submitButton" name="submitButton"
+                        value="Generate QR" onClick="makeCode()">
+                </div>
+                <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header"></div>
+                            <div class="modal-body" style="width:100%">
+                                <div id="qrcode"></div>
+                                <div id="info"></div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-success" data-dismiss="modal">Exit!</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="infobar"></div>
+            </div>
         </div>
-<div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header"></div>
-            <div class="modal-body" style="width:100%">
-            	<div id="qrcode"></div>
-            	<div id="info"></div>
-			</div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-success" data-dismiss="modal">Exit!</button>
-        </div>
-        </div>
-    </div>
-</div>
-<div id="infobar"></div>
-</div>
-</div>
 </body>
+
 </html>
