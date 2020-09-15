@@ -2,6 +2,7 @@ var firmware = "custom";
 var wifi = "default";
 var file = "conf";
 var usb = "default";
+var rtmp = "rtmp"
 var qrcode = new QRCode("qrcode");
 
 $(function () {
@@ -60,6 +61,17 @@ $("input[name=usb_check]").on("click", function() {
     usb = $(this).val();
 });
 
+$("input[name=rtmp_wifi]").on("click", function() {
+    rtmp = $(this).val();
+    if ( rtmp == "wifi" ) {
+        $("#rtmp_ip").addClass("d-none");
+        $("#rtmp_settings").addClass("d-none");
+    } else {
+        $("#rtmp_ip").removeClass("d-none");
+        $("#rtmp_settings").removeClass("d-none");
+    }
+});
+
 $('input[type=text]').on('keydown', function (e) {
     if (e.which == 13) {
         e.preventDefault();
@@ -106,6 +118,9 @@ function makeCode() {
             qrssid += "-usb";
         }
 
+        if ( rtmp === "wifi" ) {
+            qrssid += "-rtmp"
+        }
     }
 
     qrcode.makeCode('{"res":"' + res + '","sign":"","url":"rtmp://' + ip + '","ak":"","ssid":"' + qrssid +
