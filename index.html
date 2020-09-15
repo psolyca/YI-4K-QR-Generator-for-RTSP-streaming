@@ -29,9 +29,12 @@
             <div class="page col-">
                 Which version of firmware do you use ?<br />
                 <div class="col btn-group-sm btn-group-toggle" data-toggle="buttons" id="firmware">
-                    <label class="btn btn-light active">
+                    <label class="btn btn-light active" data-toggle="tooltip" title="Custom firmware &ge; 1.10.52"
+                        data-placement="left">
                         <input type="radio" name="firmware" value="custom" checked>Custom
                     </label>
+                    <label class="btn btn-light" data-toggle="tooltip" data-html="true"
+                        title="Official firmware or&lt;br />Custom firmware &lt; 1.10.52" data-placement="right">
                         <input type="radio" name="firmware" value="official">Official
                     </label>
                 </div>
@@ -43,12 +46,16 @@
                     <h5>Wifi configuration</h5>
                 </div>
                 <div class="btn-group btn-group-toggle" data-toggle="buttons" id="wifi_mode">
+                    <label class="btn btn-primary active" id="label_wifi_default" data-toggle="tooltip" data-html="true"
+                        data-placement="left" title="Use current connection or&lt;br />fired STA in wifi.conf">
                         <input type="radio" name="wifi_mode" id="radio_wifi_default" value="default" checked>Existing
                     </label>
-                    <label class="btn btn-primary" id="label_wifi_sta">
+                    <label class="btn btn-primary" id="label_wifi_sta" data-toggle="tooltip"
+                        title="Force STA connection" data-placement="top">
                         <input type="radio" name="wifi_mode" id="radio_wifi_sta" value="sta">STA
                     </label>
-                    <label class="btn btn-primary" id="label_wifi_ap">
+                    <label class="btn btn-primary" id="label_wifi_ap" data-toggle="tooltip" title="Force AP connection"
+                        data-placement="right">
                         <input type="radio" name="wifi_mode" id="radio_wifi_ap" value="ap">AP
                     </label>
                 </div>

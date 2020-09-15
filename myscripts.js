@@ -3,6 +3,9 @@ var wifi = "default";
 var ethernet = false;
 var qrcode = new QRCode("qrcode");
 
+$(function () {
+    $('[data-toggle="tooltip"]').tooltip({trigger:'hover'});
+})
 function wifi_mode (mode = "") {
     $("#ssid").val("")
     $("#pwd").val("")
