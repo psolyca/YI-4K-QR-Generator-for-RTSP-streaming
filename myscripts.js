@@ -14,11 +14,13 @@ $("input[name=firmware]").on("click", function(e) {
     if ( firmware == "custom" ) {
         $("#usb_parameters").removeClass('d-none');
         $("#wifi_mode").removeClass('d-none');
+        $("#rtmp_wifi").removeClass('d-none');
         wifi_mode("default");
     } else {
         $("#usb_parameters").addClass('d-none');
         $("#wifi_mode").addClass('d-none');
         $("#file_conf").addClass('d-none');
+        $("#rtmp_wifi").addClass('d-none');
         file_conf("custom");
     }
 })
