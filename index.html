@@ -81,6 +81,22 @@
                     <input type="text" id="pwd" name="pwd" class="form-control" placeholder="WiFi PASSWORD">
                 </div>
             </div>
+            <div class="page col-" id="usb_parameters">
+                <div>
+                    <h5>Ethernet-over-USB configuration</h5>
+                </div>
+                <div class="btn-group btn-group-toggle" data-toggle="buttons" id="usb_check">
+                    <label class="btn btn-primary active" id="label_usb_default">
+                        <input type="radio" name="usb_check" id="radio_usb_default" value="default" checked>Don't touch it
+                    </label>
+                    <label class="btn btn-primary" id="label_usb_fire">
+                        <input type="radio" name="usb_check" id="radio_usb_fire" value="fire">Fire it
+                    </label>
+                    <label class="btn btn-primary" id="label_usb_stop">
+                        <input type="radio" name="usb_check" id="radio_usb_stop" value="stop">Stop it
+                    </label>
+                </div>
+            </div>
             <div class="page col-" id="rtmp_parameters">
                 <div>
                     <h5>RTMP configuration</h5>

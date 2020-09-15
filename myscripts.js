@@ -34,10 +34,9 @@ $("input[name=firmware]").change(function(e) {
 
 $("input[name=wifi_mode]").change(function() {wifi_mode();});
 
-$("#ethernet").on("click", function() {
-    ethernet = $("#ethernet").is(":checked");
-    if ( ethernet ) {
-        $("#ether_switch").text("on");
+$("input[name=usb_check]").on("click", function() {
+    usb = $(this).val();
+});
     } else {
         $("#ether_switch").text("off");
     }
