@@ -1,6 +1,7 @@
 var firmware = "custom";
 var wifi = "default";
-var ethernet = false;
+var file = "conf";
+var usb = "default";
 var qrcode = new QRCode("qrcode");
 
 $(function () {
@@ -22,30 +23,42 @@ $("input[name=firmware]").on("click", function(e) {
 })
 
 function wifi_mode (mode = "") {
-    $("#ssid").val("")
-    $("#pwd").val("")
     wifi = !mode ? $("input[name=wifi_mode]:checked").val() : mode;
     if ( wifi == "sta" || wifi == "ap" ) {
+        $("#file_conf").removeClass('d-none');
+    } else {
+        $("#label_wifi_sta").removeClass('active');
+        $("#label_wifi_ap").removeClass('active');
+        $("#radio_wifi_default").prop("checked", true);
+        $("#label_wifi_default").addClass('active');
+        $("#file_conf").addClass('d-none');
+        $("#radio_file_conf").prop("checked", true);
+        $("#label_file_custom").removeClass('active');
+        $("#label_file_conf").addClass('active');
+    }
+    file_conf();
+}
+
+$("input[name=wifi_mode]").on("click", function() {wifi_mode();});
+
+function file_conf (mode = "") {
+    $("#ssid").val("");
+    $("#pwd").val("");
+    file = !mode ? $("input[name=file_conf]:checked").val() : mode;
+    if ( file == "custom") {
         $("#ssid_input").removeClass('d-none');
         $("#pwd_input").removeClass('d-none');
-        $("#ether_check").removeClass('d-none');
     } else {
         $("#ssid_input").addClass('d-none');
         $("#pwd_input").addClass('d-none');
-        $("#ether_check").addClass('d-none');
     }
 }
 
-
-$("input[name=wifi_mode]").change(function() {wifi_mode();});
+$("input[name=file_conf]").on("click", function() {file_conf();});
 
 $("input[name=usb_check]").on("click", function() {
     usb = $(this).val();
 });
-    } else {
-        $("#ether_switch").text("off");
-    }
-})
 
 $('input[type=text]').on('keydown', function (e) {
     if (e.which == 13) {
