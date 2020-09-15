@@ -85,7 +85,7 @@ function makeCode() {
         rate = 1;
     }
 
-    if ( !ssid && wifi !== "default" ) {
+    if ( !ssid && file === "custom" ) {
         $('.modal-header').html("Error");
         $("#qrcode").hide();
         $("#modal").modal("toggle");
@@ -95,25 +95,29 @@ function makeCode() {
 
     if (firmware === "custom") {
         if (wifi === "default") {
-            qrssid = "None";
+            var qrssid = "";
         } else {
-            qrssid += "-" + mode;
+            qrssid += "+" + wifi;
         }
 
-        if ( ethernet ) {
-            qrssid += "-ethernet"
+        if ( usb === "fire") {
+            qrssid += "+usb";
+        } else if ( usb === "stop") {
+            qrssid += "-usb";
         }
+
     }
 
     qrcode.makeCode('{"res":"' + res + '","sign":"","url":"rtmp://' + ip + '","ak":"","ssid":"' + qrssid +
         '","pwd":"' + pwd + '","rate":"' + rate + '","dur":""}');
     $("#info").empty();
     $('.modal-header').html("Scan QR with YI 4K Action Camera");
-    if ( wifi !== "default") {
+    if ( ssid ) {
         $('#info').append("SSID: " + ssid + "<br />").append("Pass: " + pwd + "<br />")
     }
     $('#info').append("IP: " + ip + "<br />").append("Resolution: " + res +
         "<br />").append("Bitrate: " + rate + "<br />");
+        $('#info').append("<br />qrssid: " + qrssid + "<br />"); 
     $("#modal").modal("toggle");
     $("#qrcode").show();
 }
