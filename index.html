@@ -38,39 +38,28 @@
             </div>
         </div>
         <div class="row">
-            <div class="page large col-" id="custom_parameters">
-                <div class="row">
-                    <div class="col-">
-                        <span>
-                            By default, live stream will use an existing connection.<br />
-                            If one want to force a reconnection, select option below.<br />
-                        </span>
-                    </div>
+            <div class="page col-" id="wifi_parameters">
+                <div>
+                    <h5>Wifi configuration</h5>
                 </div>
-                <div class="row">
-                    <div class="col-">&nbsp;</div>
+                <div class="btn-group btn-group-toggle" data-toggle="buttons" id="wifi_mode">
+                        <input type="radio" name="wifi_mode" id="radio_wifi_default" value="default" checked>Existing
+                    </label>
+                    <label class="btn btn-primary" id="label_wifi_sta">
+                        <input type="radio" name="wifi_mode" id="radio_wifi_sta" value="sta">STA
+                    </label>
+                    <label class="btn btn-primary" id="label_wifi_ap">
+                        <input type="radio" name="wifi_mode" id="radio_wifi_ap" value="ap">AP
+                    </label>
                 </div>
-                <div class="row align-items-center">
-                    <div class="col btn-group btn-group-toggle btn-group-vertical" data-toggle="buttons" id="wifi_mode">
-                        <label class="btn btn-primary active">
-                            <input type="radio" name="wifi_mode" value="default" checked> Default
-                        </label>
-                        <label class="btn btn-primary">
-                            <input type="radio" name="wifi_mode" value="sta"> STA
-                        </label>
-                        <label class="btn btn-primary">
-                            <input type="radio" name="wifi_mode" value="ap"> AP
-                        </label>
-                    </div>
-                    <div class="col btn-group-toggle d-none" data-toggle="buttons" id="ether_check">
-                        <label class="btn btn-secondary toggle-on-off">
-                            <input type="checkbox" id="ethernet"> Ethernet <span id="ether_switch">off</span>
-                        </label>
-                    </div>
+                <div class="btn-group btn-group-toggle d-none" data-toggle="buttons" id="file_conf">
+                    <label class="btn btn-primary active" id="label_file_conf">
+                        <input type="radio" name="file_conf" id="radio_file_conf" value="conf" checked> wifi.conf
+                    </label>
+                    <label class="btn btn-primary" id="label_file_custom">
+                        <input type="radio" name="file_conf" id="radio_file_custom" value="custom"> custom
+                    </label>
                 </div>
-
-            </div>
-            <div class="page col-">
                 <div class="input-group d-none" id="ssid_input">
                     <div class="input-group-prepend">
                         <span class="input-group-text">SSID</span>
@@ -84,14 +73,19 @@
                     </div>
                     <input type="text" id="pwd" name="pwd" class="form-control" placeholder="WiFi PASSWORD">
                 </div>
-                <div class="input-group">
+            </div>
+            <div class="page col-" id="rtmp_parameters">
+                <div>
+                    <h5>RTMP configuration</h5>
+                </div>
+                <div class="input-group" id="rtmp_ip">
                     <div class="input-group-prepend">
                         <span class="input-group-text">RTMP URL</span>
                     </div>
                     <input type="text" id="ip" name="ip" class="form-control" value="127.0.0.1/live"
                         placeholder="127.0.0.1/live">
                 </div>
-                <div class="form-group">
+                <div class="form-group" id="rtmp_settings">
                     <label for="res">
                         <div class="header">Resolution | Bitrate</div>
                     </label>
