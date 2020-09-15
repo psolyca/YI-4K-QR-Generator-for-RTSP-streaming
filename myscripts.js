@@ -18,7 +18,7 @@ function wifi_mode (mode = "") {
     }
 }
 
-$("input[name=firmware_version]").change(function(e) {
+$("input[name=firmware]").change(function(e) {
     firmware = $(this).val()
     if ( firmware == "custom" ) {
         $("#custom_parameters").removeClass('d-none');
