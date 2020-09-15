@@ -6,6 +6,21 @@ var qrcode = new QRCode("qrcode");
 $(function () {
     $('[data-toggle="tooltip"]').tooltip({trigger:'hover'});
 })
+
+$("input[name=firmware]").on("click", function(e) {
+    firmware = $(this).val()
+    if ( firmware == "custom" ) {
+        $("#usb_parameters").removeClass('d-none');
+        $("#wifi_mode").removeClass('d-none');
+        wifi_mode("default");
+    } else {
+        $("#usb_parameters").addClass('d-none');
+        $("#wifi_mode").addClass('d-none');
+        $("#file_conf").addClass('d-none');
+        file_conf("custom");
+    }
+})
+
 function wifi_mode (mode = "") {
     $("#ssid").val("")
     $("#pwd").val("")
@@ -21,16 +36,6 @@ function wifi_mode (mode = "") {
     }
 }
 
-$("input[name=firmware]").change(function(e) {
-    firmware = $(this).val()
-    if ( firmware == "custom" ) {
-        $("#custom_parameters").removeClass('d-none');
-        wifi_mode();
-    } else {
-        $("#custom_parameters").addClass('d-none');
-        wifi_mode("sta");
-    }
-})
 
 $("input[name=wifi_mode]").change(function() {wifi_mode();});
 
