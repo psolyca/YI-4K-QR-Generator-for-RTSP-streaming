@@ -21,8 +21,8 @@ body {
     padding-bottom: 25px;
     border-radius: 10px;
     padding-top: 25px;
-    padding-left: 55px;
-    padding-right: 55px;
+    padding-left: 30px;
+    padding-right: 30px;
 }
 
 .page.title {
@@ -46,17 +46,6 @@ body {
     visibility: visible;
     -webkit-animation: fadein 0.5s, fadeout 0.5s 9.5s;
     animation: fadein 0.5s, fadeout 0.5s 9.5s;
-}
-
-.btn.btn-secondary.toggle-on-off {
-
-    background: red;
-    border-color: red;
-}
-
-.btn.btn-secondary.active.toggle-on-off {
-    background-color: green;
-    border-color: green;
 }
 
 @-webkit-keyframes fadein {
@@ -118,4 +107,8 @@ body {
 
 #info {
     margin-top: 5px;
+}
+
+.btn-group {
+    margin-bottom: 10px;
 }
