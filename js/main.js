@@ -5,6 +5,29 @@ var usb = "default";
 var rtmp = "rtmp"
 var qrcode = new QRCode("qrcode");
 
+// register service worker
+if ('serviceWorker' in navigator) {
+    window.addEventListener('load', function() {
+        navigator.serviceWorker.register('/js/sw.js', { scope: '/'}).then(function(registration) {
+            // Registration was successful
+            console.log('ServiceWorker registration successful with scope: ', registration.scope);
+
+            if(registration.installing) {
+                console.log('Service worker installing');
+              } else if(registration.waiting) {
+                console.log('Service worker installed');
+              } else if(registration.active) {
+                console.log('Service worker active');
+              }
+
+        }, function(error) {
+            // registration failed :(
+            console.log('ServiceWorker registration failed: ', error);
+        });
+    });
+}
+
+
 $(function () {
     $('[data-toggle="tooltip"]').tooltip({trigger:'hover'});
 })

@@ -1,0 +1,17 @@
+{
+    "short_name": "Yi4K QR Generator",
+    "name": "Yi4K QR Generator - RTMP Stream - Wifi settings",
+    "description": "Create a QR code need for Yi4K custom firmware ≥ 1.10.52",
+    "icons": [
+      {
+        "src": "./images/icons-192.png",
+        "type": "image/png",
+        "sizes": "192x192"
+      }
+    ],
+    "start_url": "/",
+    "background_color": "#3367D6",
+    "display": "fullscreen",
+    "scope": "/",
+    "theme_color": "#3367D6"
+  }
