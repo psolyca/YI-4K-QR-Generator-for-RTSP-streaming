@@ -91,6 +91,7 @@ $("input[name=rtmp_wifi]").on("click", function() {
     if ( rtmp == "wifi" ) {
         $("#rtmp_ip").addClass("d-none");
         $("#rtmp_settings").addClass("d-none");
+        $("#ip").val("127.0.0.1/live");
     } else {
         $("#rtmp_ip").removeClass("d-none");
         $("#rtmp_settings").removeClass("d-none");
@@ -131,9 +132,11 @@ function makeCode() {
     }
 
     if (firmware === "custom") {
-        if (wifi === "default") {
-            var qrssid = "";
-        } else {
+        if (qrssid === "") {
+            qrssid = "None"
+        }
+
+        if (wifi !== "default") {
             qrssid += "+" + wifi;
         }
 
