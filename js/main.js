@@ -160,7 +160,6 @@ function makeCode() {
     }
     $('#info').append("IP: " + ip + "<br />").append("Resolution: " + res +
         "<br />").append("Bitrate: " + rate + "<br />");
-        $('#info').append("<br />qrssid: " + qrssid + "<br />"); 
     $("#modal").modal("toggle");
     $("#qrcode").show();
 }
